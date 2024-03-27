@@ -18,8 +18,12 @@ parser.add_argument('--height', type=float, help='Name of the height attribute',
 parser.add_argument('--global_rotation', type=float, nargs=3, help='Rotation angles (in degrees) around x, y, and z axes', default=[0.0, 0.0, 0.0])
 parser.add_argument('--global_translation', type=float, nargs=3, help='Translation vector', default=[0.0, 0.0, 0.0])
 parser.add_argument('--global_scale', type=float, nargs=3, help='Scale factor for the coordinates', default=[1.0, 1.0, 1.0])
-parser.add_argument('--local_rotation', type=str, help='Name of the local rotation attribute', default=None)
-parser.add_argument('--local_translation', type=str, help='Name of the local translation attribute', default=None)
+parser.add_argument('--local_rotation_x', type=str, help='Name of the local rotation attribute around x-axis', default=None)
+parser.add_argument('--local_rotation_y', type=str, help='Name of the local rotation attribute around y-axis', default=None)
+parser.add_argument('--local_rotation_z', type=str, help='Name of the local rotation attribute around z-axis', default=None)
+parser.add_argument('--local_translation_x', type=str, help='Name of the local translation attribute along x-axis', default=None)
+parser.add_argument('--local_translation_y', type=str, help='Name of the local translation attribute along y-axis', default=None)
+parser.add_argument('--local_translation_z', type=str, help='Name of the local translation attribute along z-axis', default=None)
 parser.add_argument('--local_scale', type=str, help='Name of the local scale attribute', default=None)
 
 def create_cityjson():
@@ -32,8 +36,12 @@ def create_cityjson():
     global_r = args.global_rotation
     global_t = args.global_translation
     global_s = args.global_scale
-    local_r = args.local_rotation
-    local_t = args.local_translation
+    local_r_x = args.local_rotation_x
+    local_r_y = args.local_rotation_y
+    local_r_z = args.local_rotation_z
+    local_t_x = args.local_translation_x
+    local_t_y = args.local_translation_y
+    local_t_z = args.local_translation_z
     local_s = args.local_scale
 
     # Read shapefile containing points
@@ -104,18 +112,22 @@ def create_cityjson():
         fid = str(uuid.uuid4())
 
         # Calculate the local transformation matrix
+        r_x = 0 if local_r_x is None else point[1].loc[local_r_x]
+        r_y = 0 if local_r_y is None else point[1].loc[local_r_y]
+        r_z = 0 if local_r_z is None else point[1].loc[local_r_z]
+        t_x = 0 if local_t_x is None else point[1].loc[local_t_x]
+        t_y = 0 if local_t_y is None else point[1].loc[local_t_y]
+        t_z = 0 if local_t_z is None else point[1].loc[local_t_z]
+        s = 1 if local_s is None else point[1].loc[local_s]
+
+        local_R = euler_to_rotation_matrix(np.radians(r_x), np.radians(r_y), np.radians(r_z))
+        local_t = np.array([t_x, t_y, t_z])
+        scale_l = np.array([s, s, s])
+
         local_Transform = np.eye(4)
-        if local_r is not None:
-            rotation = np.radians(point[1][local_r])
-            gamma, beta, alpha = rotation
-            local_R = euler_to_rotation_matrix(gamma, beta, alpha)
-            local_Transform[:3, :3] = local_R
-        if local_t is not None:
-            translation = np.array(point[1][local_t])
-            local_Transform[:3, 3] = translation
-        if local_s is not None:
-            scale = np.array(point[1][local_s])
-            local_Transform[:3, :3] *= scale
+        local_Transform[:3, :3] = local_R
+        local_Transform[:3, 3] = local_t
+        local_Transform[:3, :3] *= scale_l
 
         # If -0.0, convert to 0.0
         local_Transform = np.array([[0.0 if i == -0.0 else i for i in row] for row in local_Transform])
