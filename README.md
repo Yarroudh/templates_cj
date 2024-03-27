@@ -66,7 +66,7 @@ This command will create a CityJSON file named `output.json` using the points fr
 
 ## Author
 
-This software was developped by [Anass Yarroudh](https://www.linkedin.com/in/anass-yarroudh/), a Research Engineer at [University of Liege](http://uliege.be/).
+This software was developped by [Anass Yarroudh](https://www.linkedin.com/in/anass-yarroudh/), Research Engineer at [University of Liege](http://uliege.be/).
 For more detailed information please contact us via <ayarroudh@uliege.be>, we are pleased to send you the necessary information.
 
 -----
