@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/72500344/210864557-4078754f-86c1-4e7c-b291-73223bdf4e4d.png" alt="logo" width="200"/>
+<img src="https://github.com/Yarroudh/templates_cj/assets/72500344/1b523bfa-b0d4-46d6-9400-69bc1c81fe90" alt="logo" width="200"/>
 
 # CityJSON Geometry Templates Mapper
 
@@ -66,9 +66,9 @@ This command will create a CityJSON file named `output.json` using the points fr
 
 ## Author
 
-This software was developped by [Anass Yarroudh](https://www.linkedin.com/in/anass-yarroudh/), a Research Engineer at the [Geomatics Unit of the University of Liege](http://geomatics.ulg.ac.be/fr/home.php).
+This software was developped by [Anass Yarroudh](https://www.linkedin.com/in/anass-yarroudh/), a Research Engineer at [University of Liege](http://uliege.be/).
 For more detailed information please contact us via <ayarroudh@uliege.be>, we are pleased to send you the necessary information.
 
 -----
 
-Copyright © 2023, [Geomatics Unit of ULiège](http://geomatics.ulg.ac.be/fr/home.php). Released under [MIT License](https://github.com/Yarroudh/templates_cj/blob/main/LICENSE).
+Copyright © 2023, [GeoScITY Lab - ULiège](http://www.geoscity.uliege.be/). Released under [MIT License](https://github.com/Yarroudh/templates_cj/blob/main/LICENSE).
