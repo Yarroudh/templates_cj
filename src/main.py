@@ -12,6 +12,7 @@ parser.add_argument('--points', type=str, help='Path to shapefile containing poi
 parser.add_argument('--model', type=str, help='Path to 3D model in OBJ format', required=True)
 parser.add_argument('--save', type=str, help='Path to save CityJSON file', default='output.json')
 
+parser.add_argument('--type', type=str, help='Type of the CityObject', default='GenericCityObject', choices=['GenericCityObject', 'CityFurniture', 'OtherConstruction', 'Bridge', 'Building', 'PlantCover', 'SolitaryVegetationObject', 'TransportSquare', 'WaterBody'])
 parser.add_argument('--crs', type=int, help='EPSG code of the coordinate reference system', default=None)
 parser.add_argument('--height', type=float, help='Name of the height attribute', default=None)
 parser.add_argument('--rotation', type=float, nargs=3, help='Rotation angles (in degrees) around x, y, and z axes', default=[0.0, 0.0, 0.0])
@@ -39,6 +40,7 @@ def create_cityjson():
     # Parse arguments
     args = parser.parse_args()
 
+    object_type = args.type
     crs = args.crs
     height = args.height
     rotation = args.rotation
@@ -121,7 +123,7 @@ def create_cityjson():
         # Get attributes of the point except geometry
         attributes = point[1].drop(['geometry', 'x', 'y', 'z']).to_dict()
         cityjson['CityObjects'][fid] = {
-            "type": "GenericCityObject",
+            "type": object_type,
             "attributes": attributes,
             "geometry": [
                 {
