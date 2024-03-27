@@ -109,6 +109,12 @@ def create_cityjson():
     transformation_matrix[:3, 3] = translation
     transformation_matrix[:3, :3] *= scale
 
+    # If -0.0, convert to 0.0
+    transformation_matrix = np.array([[0.0 if i == -0.0 else i for i in row] for row in transformation_matrix])
+
+    # Flatten the transformation matrix
+    transformation_matrix = transformation_matrix.flatten().tolist()
+
     # Create CityObject for each instance, first generate UUIDs, then add CityObject as a dictionary where geometry is as follows:
     for index, point in enumerate(points_gdf.iterrows()):
         fid = str(uuid.uuid4())
@@ -122,7 +128,7 @@ def create_cityjson():
                     "type": "GeometryInstance",
                     "template": 0,
                     "boundaries": [index],
-                    "transformationMatrix": transformation_matrix.tolist()
+                    "transformationMatrix": transformation_matrix
                 }
             ]
         }
