@@ -17,7 +17,7 @@ setup(
     install_requires=requirements,
     entry_points={
         "console_scripts": [
-            "templates_cj=templates_cj.main:main"
+            "templates_cj=src.main:main"
         ]
     }
 )
