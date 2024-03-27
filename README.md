@@ -20,7 +20,11 @@ This will install the package locally from the current directory.
 ## Usage
 
 ```bash
-usage: template_cj [-h] --points POINTS --model MODEL [--save SAVE] [--crs CRS] [--height HEIGHT] [--rotation ROTATION ROTATION ROTATION] [--translation TRANSLATION TRANSLATION TRANSLATION] [--scale SCALE SCALE SCALE] [--version VERSION]
+usage: template_cj [-h] --points POINTS --model MODEL [--save SAVE]
+                   [--type {GenericCityObject,CityFurniture,OtherConstruction,Bridge,Building,PlantCover,SolitaryVegetationObject,TransportSquare,WaterBody}]
+                   [--crs CRS] [--height HEIGHT] [--rotation ROTATION ROTATION ROTATION]
+                   [--translation TRANSLATION TRANSLATION TRANSLATION] [--scale SCALE SCALE SCALE]        
+                   [--version VERSION]
 
 Create CityJSON file from points and a 3D model (OBJ)
 
@@ -29,6 +33,8 @@ optional arguments:
   --points POINTS       Path to shapefile containing points
   --model MODEL         Path to 3D model in OBJ format
   --save SAVE           Path to save CityJSON file
+  --type {GenericCityObject,CityFurniture,OtherConstruction,Bridge,Building,PlantCover,SolitaryVegetationObject,TransportSquare,WaterBody}
+                        Type of the CityObject
   --crs CRS             EPSG code of the coordinate reference system
   --height HEIGHT       Name of the height attribute
   --rotation ROTATION ROTATION ROTATION
@@ -51,10 +57,10 @@ template_cj --points points.shp --model model.obj --save output.json
 This command will create a CityJSON file named `output.json` using the points from `points.shp`, the 3D model from `model.obj`, with default configuration.
 
 ```bash
-template_cj --points points.shp --model model.obj --save output.json --crs 4326 --height elevation --rotation 0 90 0 --translation 0 0 0 --scale 1 1 1 --version 1.0
+template_cj --points points.shp --model model.obj --save output.json --type CityFurniture --crs 4326 --height elevation --rotation 0 90 0 --translation 0 0 0 --scale 1 1 1 --version 1.0
 ```
 
-This command will create a CityJSON file named `output.json` using the points from `points.shp`, the 3D model from `model.obj`, with EPSG code `4326` as CRS, height attribute named `elevation`, rotation angles of `0` degrees around the x-axis, `90` degrees around the y-axis, `0` degrees around the z-axis, no translation, no scaling, and with version `1.1`.
+This command will create a CityJSON file named `output.json` using the points from `points.shp`, the 3D model from `model.obj`, as `CityFurniture` object, with EPSG code `4326`, height attribute named `elevation`, rotation angles of `0` degrees around the x-axis, `90` degrees around the y-axis, `0` degrees around the z-axis, no translation, no scaling, and with version `1.1`.
 
 ## Author
 
