@@ -62,6 +62,8 @@ template_cj --points points.shp --model model.obj --save output.json --type City
 
 This command will create a CityJSON file named `output.json` using the points from `points.shp`, the 3D model from `model.obj`, as `CityFurniture` object, with EPSG code `4326`, height attribute named `elevation`, rotation angles of `0` degrees around the x-axis, `90` degrees around the y-axis, `0` degrees around the z-axis, no translation, no scaling, and with version `1.1`.
 
+![image](https://github.com/Yarroudh/templates_cj/assets/72500344/9497c126-6281-497c-b466-ee27f60667e8)
+
 ## Author
 
 This software was developped by [Anass Yarroudh](https://www.linkedin.com/in/anass-yarroudh/), a Research Engineer at the [Geomatics Unit of the University of Liege](http://geomatics.ulg.ac.be/fr/home.php).
