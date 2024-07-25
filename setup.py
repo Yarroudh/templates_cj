@@ -4,7 +4,7 @@ with open("requirements.txt", "r") as file:
     requirements = file.read().splitlines()
 
 setup(
-    name="templates_cj",
+    name="template_cj",
     version='0.1.0',
     description="CLI application to create CityJSON files from templates",
     long_description=open('README.md').read(),
