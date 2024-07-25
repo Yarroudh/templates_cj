@@ -94,7 +94,6 @@ def create_cityjson():
     cityjson['geometry-templates']['vertices-templates'] = vertices_templates
 
     # Calculate the global transformation matrix
-    global_r = np.radians(global_r)
     gamma, beta, alpha = global_r
     global_R = euler_to_rotation_matrix(gamma, beta, alpha)
     global_t = np.array(global_t)
