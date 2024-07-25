@@ -4,7 +4,7 @@ with open("requirements.txt", "r") as file:
     requirements = file.read().splitlines()
 
 setup(
-    name="template_cj",
+    name="templates_cj",
     version='0.1.0',
     description="CLI application to create CityJSON files from templates",
     long_description=open('README.md').read(),
@@ -17,7 +17,7 @@ setup(
     install_requires=requirements,
     entry_points={
         "console_scripts": [
-            "template_cj=src.main:main"
+            "templates_cj=src.main:main"
         ]
     }
 )
