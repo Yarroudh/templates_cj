@@ -58,7 +58,7 @@ def create_cityjson():
 
     cityjson = {
         "type": "CityJSON",
-        "version": "1.1",
+        "version": "2.0",
         "transform": {
             "scale": [1.0, 1.0, 1.0],
             "translate": [0.0, 0.0, 0.0]
