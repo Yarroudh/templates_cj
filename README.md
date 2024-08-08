@@ -20,7 +20,7 @@ This will install the package locally from the current directory.
 ## Usage
 
 ```bash
-usage: template_cj [-h] --points POINTS --model MODEL [--save SAVE]
+usage: templates_cj [-h] --points POINTS --model MODEL [--save SAVE]
                    [--type {GenericCityObject,CityFurniture,OtherConstruction,Bridge,Building,PlantCover,SolitaryVegetationObject,TransportSquare,WaterBody}]
                    [--crs CRS] [--height HEIGHT] [--global_rotation GLOBAL_ROTATION GLOBAL_ROTATION GLOBAL_ROTATION]
                    [--global_translation GLOBAL_TRANSLATION GLOBAL_TRANSLATION GLOBAL_TRANSLATION]
@@ -67,13 +67,13 @@ optional arguments:
 To create a CityJSON file using `templates_cj`, you can use the following command:
 
 ```bash
-template_cj --points points.shp --model model.obj --save output.json
+templates_cj --points points.shp --model model.obj --save output.json
 ```
 
 This is the basic command that will create a CityJSON file named `output.json` using the points from `points.shp`, the 3D model from `model.obj`, with default configuration.
 
 ```bash
-template_cj --points points.shp --model model.obj --save output.json --type CityFurniture --crs 4326 --height elevation --rotation 0 90 0 --translation 0 0 0 --scale 1 1 1 --version 1.0
+templates_cj --points points.shp --model model.obj --save output.json --type CityFurniture --crs 4326 --height elevation --rotation 0 90 0 --translation 0 0 0 --scale 1 1 1 --version 1.0
 ```
 
 This command will create a CityJSON file named `output.json` using the points from `points.shp`, the 3D model from `model.obj`, as `CityFurniture` object, with EPSG code `4326`, height attribute named `elevation`, rotation angles of `0` degrees around the x-axis, `90` degrees around the y-axis, `0` degrees around the z-axis, no translation, no scaling, and with version `1.1`.
